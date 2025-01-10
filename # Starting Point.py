@@ -1,6 +1,39 @@
 # Starting Point
 import time
 
+def Menu():
+    while True:
+        print("What're u here for?")
+        print("1. Age")
+        print("2. Siblings")
+        print("3. Favourites")
+        print("4. Quit")
+        MenuSelection = input()
+        
+        if MenuSelection == "1":
+                UserAge = AskAge()
+        elif MenuSelection == "2":
+            while True: 
+                print(" 1. Sibling Entry")
+                print(" 2. Sibling List")
+                SibMenuSelection = input()
+                
+                if SibMenuSelection == "1":
+                        UserSiblings, UserSiblingDetails = AskSiblings()
+                elif SibMenuSelection == "2":
+                    print("U have ", UserSiblings, " siblings.")
+                    print("Their names are:")
+                    for SibName in UserSiblingDetails:
+                                print(SibName)
+
+                else: print("Invalid Selection. Please try again.")
+
+        elif MenuSelection == "3": 
+                print("Favourites Not Implemented Yet")
+        elif MenuSelection == "4":
+                print("Goodbye.")
+                break
+
 def AskNames():
     print("My name?")
     MyName = input()
@@ -40,16 +73,13 @@ def AskSiblings():
 
     UserSiblingDetails = []
     for _ in range(UserSiblings):
-        print("What's One?")#add sequential order   "name?")
+        Counter = _ + 1
+        print("Name ", str(Counter), "?")
         UserSiblingDetails.append(input())
-    return UserSiblingDetails
-
+    return UserSiblings, UserSiblingDetails, Counter
 
 MyName, UserName = AskNames()
 print("Yr name is ", len(UserName), " letters long.   Weird.")
 print("Yr name plus mine is ", len(UserName) + len(MyName)," letters long.")
 
-
-UserAge = AskAge()
-
-UserSiblingDetails = AskSiblings()
+Menu()
